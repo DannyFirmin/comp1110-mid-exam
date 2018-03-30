@@ -7,9 +7,13 @@ public class Q4Cypher {
 
     /**
      * Constructor for a cypher instance
+     *
      * @param key The key used by the cypher
      */
+    int key;
+
     Q4Cypher(int key) {
+        this.key = key;
         // FIXME Question 4b: complete this constructor
     }
 
@@ -19,31 +23,44 @@ public class Q4Cypher {
      * - it must not be empty
      * - it must only contain the characters in the character range ' ' to 'Z' (values 32 to 90 inclusive).
      * - it must not start or end with a space
+     *
      * @param input The string to be checked
      * @return True if the input string is well-formed
      */
     static boolean isWellFormed(String input) {
-        return false; // FIXME Question 4a: complete this function
+        if (input == null || input.equals(""))
+            return false;
+        for (int i = 0; i < input.length(); i++)
+            if ((int) input.charAt(i) > 90 || (int) input.charAt(i) < 32)
+                return false;
+        if (input.charAt(0) == ' ' || input.charAt(input.length() - 1) == ' ')
+            return false;
+        return true; // FIXME Question 4a: complete this function
     }
 
     /**
      * Encode the input string using a simple rotation cypher.
-     *
+     * <p>
      * For a character c at position i in the string, it is shifted i + key places
      * in the sequence of 59 characters ' ' ... 'Z', where a shift beyond 'Z'
      * wraps around to the start of the sequence.
-     *
+     * <p>
      * For example, if key was 2, the string "CAT" becomes "EDW", with the character
      * 'C' rotated 2, 'A' rotated 3, and 'T' rotated 4.   The string "YOU" becomes
      * " RY", with 'Y' rotated 2 (wrapping around to ' '), 'R' rotated 3, and 'W'
      * rotated 4.
-     *
      * @param input THe string to be encoded
      * @return An encoded string
      */
+    //Code from tutor
     String encode(String input) {
+        String output = "";
+        for (int i = 0; i < input.length(); i++) {
+            int shift = (((int) input.charAt(i)) + key + i - (int) ' ') % 59;
+            output += (char) ((int) ' ' + shift);
+        }
         // FIXME Question 4c: complete this function
-        return input;
+        return output;
     }
 
     /*

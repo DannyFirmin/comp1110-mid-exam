@@ -11,13 +11,17 @@ public class Q3Plane {
      * @param name The name of the plane
      * @param speed The speed of the plane (in km/h),
      */
+    String name;
+    int speed;
     Q3Plane(String name, int speed) {
         // FIXME 3a: complete this constructor
+        this.name = name;
+        this.speed = speed;
     }
 
     /** Return the speed of the plane */
     int getSpeed() {
-        return 0; // FIXME 3b: complete this method
+        return speed; // FIXME 3b: complete this method
     }
 
     /**
@@ -26,6 +30,8 @@ public class Q3Plane {
      */
     void resetSpeed(int speed) {
         // FIXME 3c: complete this method
+        this.speed = speed;
+
     }
 
     /**
@@ -34,7 +40,9 @@ public class Q3Plane {
      * @return The time to travel the distance (in minutes)
      */
     int timeToTravel(int distance) {
-        return 0; // FIXME 3f: complete this method
+        int time;
+        time = 60*distance / speed;
+        return time; // FIXME 3f: complete this method
     }
 
     /**
@@ -48,6 +56,6 @@ public class Q3Plane {
      */
     @Override
     public String toString() {
-        return "";  // FIXME 3g: complete this method
+        return "Plane " + name + " is travelling " + speed + " km/h";  // FIXME 3g: complete this method
     }
 }
